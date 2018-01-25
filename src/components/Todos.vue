@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div v-for="todo in todos" :key="todo.title">
+    <div v-for="(todo, index) in todos" :key="todo.title">
       <b-field class="is-pulled-left">
-        <b-checkbox size="is-large">{{ todo.title }}</b-checkbox>
+        <b-checkbox size="is-large" @input="checkCompleted(index)">
+          <strike v-if="todo.completed">{{ todo.title }} dsadsa</strike>
+          <p v-else>{{ todo.title }}</p>
+          </b-checkbox>
       </b-field>
       <a class="delete is-pulled-right" @click="removeTodo(index)"></a>
       <div class="is-clearfix"></div>
@@ -18,7 +21,7 @@ export default {
     ...mapGetters(['todos'])
   },
   methods: {
-    ...mapActions(['removeTodo'])
+    ...mapActions(['removeTodo', 'checkCompleted'])
   }
 }
 </script>
