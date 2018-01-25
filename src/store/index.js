@@ -22,6 +22,13 @@ export const store = new Vuex.Store({
     CHECK_COMPLETED (state, index) {
       state.todos[index].completed = !state.todos[index].completed
     },
+    CLEAR_COMPLETED (state) {
+      for (var i = state.todos.length - 1; i >= 0; i--) {
+        if (state.todos[i].completed === true) {
+          state.todos.splice(i, 1)
+        }
+      }
+    },
     CHANGE_VISIBILITY (state, newVisibilityValue) {
       state.visibility = newVisibilityValue
     }
@@ -35,6 +42,9 @@ export const store = new Vuex.Store({
     },
     checkCompleted ({commit}, index) {
       commit('CHECK_COMPLETED', index)
+    },
+    clearCompleted ({commit}) {
+      commit('CLEAR_COMPLETED')
     },
     changeVisibility ({commit}, newVisibilityValue) {
       commit('CHANGE_VISIBILITY', newVisibilityValue)

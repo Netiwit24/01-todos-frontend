@@ -34,6 +34,7 @@
       <div class="is-clearfix"></div>
       </div>
     </div>
+    <button class="button is-danger is-medium" @click="clearCompleted()">clear</button>
   </div>
 </template>
 
@@ -45,7 +46,7 @@ export default {
     ...mapGetters(['todos', 'visibility'])
   },
   methods: {
-    ...mapActions(['removeTodo', 'checkCompleted'])
+    ...mapActions(['removeTodo', 'checkCompleted', 'clearCompleted'])
   }
 }
 </script>
